@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { Button } from "react-bootstrap"
 import Increment5 from "./Increment5"
+import IncrementX from './IncrementX'
 import { incrementCount } from '../../../redux/count/action'
 
 const Increment = ({ incrementCount }) => {
@@ -14,6 +15,7 @@ const Increment = ({ incrementCount }) => {
         Increment
       </Button>
       <Increment5 />
+			<IncrementX />
     </>
   );
 };

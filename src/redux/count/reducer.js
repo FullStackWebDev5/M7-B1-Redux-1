@@ -1,4 +1,4 @@
-import { INCREMENT_COUNT, DECREMENT_COUNT, INCREMENT_COUNT_5, DECREMENT_COUNT_5 } from './action'
+import { INCREMENT_COUNT, DECREMENT_COUNT, INCREMENT_COUNT_5, DECREMENT_COUNT_5, INCREMENT_COUNT_X } from './action'
 
 const initialState = {
 	count: 0
@@ -25,6 +25,11 @@ const countReducer = (state = initialState, action) => {
 			return {
 				...state,
 				count: state.count - 5
+			}
+		case INCREMENT_COUNT_X:
+			return {
+				...state,
+				count: state.count + action.payload
 			}
 		default:
 			return state
