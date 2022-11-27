@@ -1,19 +1,27 @@
-import { Button } from "react-bootstrap";
-import Increment5 from "./Increment5";
+import { connect } from 'react-redux'
+import { Button } from "react-bootstrap"
+import Increment5 from "./Increment5"
+import { incrementCount } from '../../../redux/count/action'
 
-const Increment = ({ count, setCount }) => {
+const Increment = ({ incrementCount }) => {
   return (
     <>
       <Button
         variant="dark"
         className="m-2"
-        onClick={() => setCount(count + 1)}
+        onClick={() => incrementCount()}
       >
         Increment
       </Button>
-      <Increment5 count={count} setCount={setCount} />
+      <Increment5 />
     </>
   );
 };
 
-export default Increment;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		incrementCount: () => dispatch(incrementCount())
+	}
+}
+
+export default connect(null ,mapDispatchToProps)(Increment)

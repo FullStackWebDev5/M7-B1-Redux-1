@@ -1,11 +1,20 @@
-import { Button } from "react-bootstrap";
+import { connect } from 'react-redux'
+import { Button } from "react-bootstrap"
 
-const Increment5 = ({ count, setCount }) => {
+import { incrementCount5 } from '../../../redux/count/action';
+
+const Increment5 = ({ incrementCount5 }) => {
   return (
-    <Button variant="dark" className="m-2" onClick={() => setCount(count + 5)}>
+    <Button variant="dark" className="m-2" onClick={() => incrementCount5()}>
       Increment5
     </Button>
   );
 };
 
-export default Increment5;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		incrementCount5: () => dispatch(incrementCount5())
+	}
+}
+
+export default connect(null, mapDispatchToProps)(Increment5);
