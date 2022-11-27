@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Form, Button } from "react-bootstrap"
 import { incrementCountX } from '../../../redux/count/action'
 
-const IncrementX = ({ incrementCountX }) => {
+const IncrementX = () => {
+	const dispatch = useDispatch()
 	const [num, setNum] = useState(1)
   return (
     <>
@@ -21,7 +22,7 @@ const IncrementX = ({ incrementCountX }) => {
       <Button
         variant="dark"
         className="m-2"
-        onClick={() => incrementCountX(Number(num))}
+        onClick={() => dispatch(incrementCountX(Number(num)))}
       >
         Increment {num}
       </Button>
@@ -30,10 +31,4 @@ const IncrementX = ({ incrementCountX }) => {
   );
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		incrementCountX: (x) => dispatch(incrementCountX(x))
-	}
-}
-
-export default connect(null, mapDispatchToProps)(IncrementX);
+export default IncrementX;

@@ -1,15 +1,16 @@
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Button } from "react-bootstrap"
 import Decrement5 from "./Decrement5"
 import { decrementCount } from '../../../redux/count/action'
 
-const Decrement = ({ decrementCount }) => {
+const Decrement = () => {
+	const dispatch = useDispatch()
   return (
     <>
       <Button
         variant="dark"
         className="m-2"
-        onClick={() => decrementCount()}
+        onClick={() => dispatch(decrementCount())}
       >
         Decrement
       </Button>
@@ -18,10 +19,4 @@ const Decrement = ({ decrementCount }) => {
   )
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		decrementCount: () => dispatch(decrementCount())
-	}
-}
-
-export default connect(null, mapDispatchToProps)(Decrement);
+export default Decrement;

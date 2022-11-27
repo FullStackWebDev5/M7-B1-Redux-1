@@ -1,16 +1,17 @@
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Button } from "react-bootstrap"
 import Increment5 from "./Increment5"
 import IncrementX from './IncrementX'
 import { incrementCount } from '../../../redux/count/action'
 
-const Increment = ({ incrementCount }) => {
+const Increment = () => {
+	const dispatch = useDispatch()
   return (
     <>
       <Button
         variant="dark"
         className="m-2"
-        onClick={() => incrementCount()}
+        onClick={() => dispatch(incrementCount())}
       >
         Increment
       </Button>
@@ -20,10 +21,4 @@ const Increment = ({ incrementCount }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		incrementCount: () => dispatch(incrementCount())
-	}
-}
-
-export default connect(null ,mapDispatchToProps)(Increment)
+export default Increment

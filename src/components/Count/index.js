@@ -1,9 +1,10 @@
 import { Container } from "react-bootstrap";
 import Increment from './Increment'
 import Decrement from './Decrement'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-const Count = ({ count }) => {
+const Count = () => {
+	const count = useSelector((store) => store.countReducer.count)
   return (
     <Container className="main-wrapper">
       <h1 className="display-1 count-display">{count}</h1>
@@ -13,10 +14,4 @@ const Count = ({ count }) => {
   );
 };
 
-const mapStateToProps = (store) => {
-	return {
-		count: store.countReducer.count
-	}
-}
-
-export default connect(mapStateToProps)(Count);
+export default Count

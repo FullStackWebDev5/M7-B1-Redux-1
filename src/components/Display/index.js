@@ -1,8 +1,10 @@
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Container, ButtonGroup, Button } from "react-bootstrap";
 import { show, hide } from "../../redux/display/action";
 
-const Display = ({ display, turnBulbOn, turnBulbOff }) => {
+const Display = () => {
+	const display = useSelector((store) => store.displayReducer.display)
+	const dispatch = useDispatch()
   return (
     <Container className="main-wrapper">
       <img
@@ -16,10 +18,10 @@ const Display = ({ display, turnBulbOn, turnBulbOff }) => {
       <br />
       <br />
       <ButtonGroup>
-        <Button variant="dark" onClick={() => turnBulbOn()}>
+        <Button variant="dark" onClick={() => dispatch(show())}>
           Turn ON
         </Button>
-        <Button variant="dark" onClick={() => turnBulbOff()}>
+        <Button variant="dark" onClick={() => dispatch(hide())}>
           Turn OFF
         </Button>
       </ButtonGroup>
@@ -27,17 +29,4 @@ const Display = ({ display, turnBulbOn, turnBulbOff }) => {
   );
 };
 
-const mapStateToProps = (store) => {
-  return {
-    display: store.displayReducer.display,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    turnBulbOn: () => dispatch(show()),
-    turnBulbOff: () => dispatch(hide()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Display);
+export default Display;
