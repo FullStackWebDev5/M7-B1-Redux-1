@@ -15,7 +15,7 @@ const Count = ({ count }) => {
 
 const mapStateToProps = (store) => {
 	return {
-		count: store.count
+		count: store.countReducer.count
 	}
 }
 
